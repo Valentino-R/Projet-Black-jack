@@ -10,7 +10,7 @@ enum Color{
 };
 
 enum Rank{
-    two = 2, 
+    two, 
     three, 
     four, 
     five, 
@@ -95,7 +95,7 @@ int createNewDeck()
 {
     for (int i = 0; i < 52; i++)			// for each card in the deck:
     {
-        switch((i % 13) + 2)
+        switch(i % 13)
         {
             case 0:   cards[i].setRank(two);	break;
             case 1:   cards[i].setRank(three);	break;
