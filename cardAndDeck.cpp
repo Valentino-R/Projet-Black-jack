@@ -55,25 +55,70 @@ private:
     
 public:
 
-Color getColor(){
-    return colorName;
+int card()
+{
+   colorName = getColor();
+   rankName = getRank();
 }
+
+Color getColor()
+{ return colorName; }
 
 void setcolor(Color col)
-// set the suit of a card
 { colorName = col; }
 
-Rank getRank(){
-    return rankName;
-}
+Rank getRank()
+{ return rankName; }
 
 void setRank(Rank r)
-
 { rankName = r; }
 
-int cardConstructor( Color, Rank)
-{
+};
 
+class Deck{
+private:
+
+Color colorName;
+Rank rankName;
+Card cards[52];
+int remainingCard {};
+int usedCard {};
+
+        
+public:
+
+int DisplayDeck(){
+    std::cout << rankName << " " << colorName << '\n';
+}
+
+int createNewDeck()
+{
+    for (int i = 0; i < 52; i++)			// for each card in the deck:
+    {
+        switch((i % 13) + 2)
+        {
+            case 0:   cards[i].setRank(two);	break;
+            case 1:   cards[i].setRank(three);	break;
+            case 2:   cards[i].setRank(four);	break;
+            case 3:   cards[i].setRank(five);	break;
+            case 4:   cards[i].setRank(six);	break;
+            case 5:   cards[i].setRank(seven);	break;
+            case 6:   cards[i].setRank(eight);	break;
+            case 7:   cards[i].setRank(nine);	break;
+            case 8:   cards[i].setRank(ten);	break;
+            case 9:   cards[i].setRank(Jack);	break;
+            case 10:  cards[i].setRank(Queen);  break;
+            case 11:  cards[i].setRank(King);	break;
+            case 13:  cards[i].setRank(Ace);	break;
+        }
+        switch (i / 13)	 			// and a suit.
+        {
+        case 0:   cards[i].setcolor(clubs);	 	break;
+        case 1:   cards[i].setcolor(diamonds);	break;
+        case 2:   cards[i].setcolor(hearts);		break;
+        case 3:   cards[i].setcolor(spades);		break;
+        }
+    }
 }
 
 void Display()
@@ -106,50 +151,14 @@ void Display()
     }
 
 }
-};
 
-class Deck{
-private:
-
-Card cards[52];
-int remainingCard {};
-int usedCard {};
-
-        
-public:
-
-int createNewDeck()
-{
-    for (int i = 0; i < 52; i++)			// for each card in the deck:
-    {
-        switch((i % 13) + 2)
-        {
-            case 0:   cards[i].setRank(two);	break;
-            case 1:   cards[i].setRank(three);	break;
-            case 2:   cards[i].setRank(four);	break;
-            case 3:   cards[i].setRank(five);	break;
-            case 4:   cards[i].setRank(six);	break;
-            case 5:   cards[i].setRank(seven);	break;
-            case 6:   cards[i].setRank(eight);	break;
-            case 7:   cards[i].setRank(nine);	break;
-            case 8:   cards[i].setRank(ten);	break;
-            case 9:   cards[i].setRank(Jack);	break;
-            case 10:  cards[i].setRank(Queen);  break;
-            case 11:  cards[i].setRank(King);	break;
-            case 13:  cards[i].setRank(Ace);	break;
-        }
-        switch (i / 13)	 			// and a suit.
-        {
-        case 0:   cards[i].setcolor(clubs);	 	break;
-        case 1:   cards[i].setcolor(diamonds);	break;
-        case 2:   cards[i].setcolor(hearts);		break;
-        case 3:   cards[i].setcolor(spades);		break;
-        }
-    }
-}
 };
 
 int main (){
+
+    Deck deck1{};
+    deck1.createNewDeck();
+    deck1.DisplayDeck();
 
     return 0;
 }
