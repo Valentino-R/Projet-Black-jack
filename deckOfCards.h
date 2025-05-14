@@ -51,6 +51,12 @@ public:
 Deck( Card cards[52], Rank rank, Color color);
 Card cards[52];
 Card DealCard();
+Rank m_rank;
+Rank getRank() const;
+void setRank(Rank);
+Color m_color;
+Color getColor() const;
+void setColor(Color);
 void DisplayDeck() const;
 
 };

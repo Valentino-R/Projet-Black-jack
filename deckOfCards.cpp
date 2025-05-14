@@ -84,18 +84,18 @@ Deck::Deck(Card cards[52], Rank, Color)
     }
 }
 
-Rank Card::getRank() const
+Rank Deck::getRank() const
 { return m_rank; }
 
-void Card::setRank(Rank rank)
+void Deck::setRank(Rank rank)
 {
     m_rank = rank;
 }
 
-Color Card::getColor() const
+Color Deck::getColor() const
 { return m_color; }
 
-void Card::setColor(Color color)
+void Deck::setColor(Color color)
 {
     m_color = color;
 }
