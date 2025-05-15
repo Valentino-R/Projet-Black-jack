@@ -42,21 +42,11 @@ void DisplayCard() const;
 
 };
 
-class Deck
-{
+class Deck{
 private:
 
 public:
-
-Deck( Card cards[52], Rank rank, Color color);
+Deck();
 Card cards[52];
-Card DealCard();
-Rank m_rank;
-Rank getRank() const;
-void setRank(Rank);
-Color m_color;
-Color getColor() const;
-void setColor(Color);
-void DisplayDeck() const;
-
+void DisplayDeck();
 };

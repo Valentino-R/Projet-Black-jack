@@ -29,7 +29,7 @@ private:
 
 public:
 
-Deck( Card cards[52], Rank rank, Color color);
+Deck();
 Card cards[52];
 Card DealCard();
 Rank m_rank;

@@ -1,7 +1,7 @@
 #include "deck.h"
 #include "card.h"
 
-Deck::Deck( Card cards[52], Rank rank, Color color)
+Deck::Deck()
 {
     for (int i = 0; i < 52; i++)// for each card in the deck:
     {
