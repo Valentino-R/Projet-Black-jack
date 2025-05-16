@@ -82,6 +82,6 @@ void Deck::DisplayDeck()const
 int main()
 {
     Deck deck1{};
-    deck1.
+    deck1.DisplayDeck();
     return 0;
 }

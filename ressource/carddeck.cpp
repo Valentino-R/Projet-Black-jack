@@ -132,3 +132,10 @@ Card Deck::DealCard()
 
 int Deck::TopCard() const
 {    return topCard;  }
+
+int main()
+{
+	Deck deck1;
+	deck1.TopCard();
+	return 0;
+}

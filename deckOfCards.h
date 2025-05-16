@@ -26,27 +26,38 @@ enum Rank{
 class Card{
 private:
 
-
-
 public:
 
-Card(Rank rank, Color color);
 Rank m_rank;
+Color m_color;
+
 Rank getRank() const;
 void setRank(Rank);
-Color m_color;
+
 Color getColor() const;
 void setColor(Color);
-void DisplayCard() const;
-
+void DisplayCard();
+void PrintRank();
+void PrintColor();
 
 };
 
 class Deck{
 private:
 
+Card cards[52];
+
+Rank m_rank;
+Rank getRank() const;
+void setRank(Rank);
+
+Color m_color;
+Color getColor() const;
+void setColor(Color);
+
 public:
 Deck();
-Card cards[52];
 void DisplayDeck();
+void PrintDeck();
+
 };

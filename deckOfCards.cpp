@@ -1,93 +1,144 @@
 #include "deckOfCards.h"
 
-Card::Card(Rank rank, Color color)
+void Card::DisplayCard()
 {
-    m_rank = rank;
-    m_color = color;
+    PrintRank();
+    PrintColor();
+    std::cout << '\n';
 }
 
-void Card::DisplayCard()const
+void Card::PrintRank()
 {
-
-        switch (m_rank)
-        {
-        case two:   std::cout <<    "two";      break;
-        case three: std::cout <<    "three";    break;
-        case four:  std::cout <<    "four";     break;
-        case five:  std::cout <<    "five";     break;
-        case six:   std::cout <<    "six";      break;
-        case seven: std::cout <<    "seven";    break;
-        case eight: std::cout <<    "eight";    break;
-        case nine:  std::cout <<    "nine";     break;
-        case ten:   std::cout <<    "ten";      break;
-        case Jack:  std::cout <<    "Jack";     break;
-        case Queen: std::cout <<    "Queen";    break;
-        case King:  std::cout <<    "King";     break;
-        case Ace:   std::cout <<    "Ace";      break;
-        default:    std::cout <<    "???";      break;
-        } 
-        
-        switch (m_color)
-        {
-        case clubs:     std::cout << " of clubs";     break;
-        case diamonds:  std::cout << " of diamonds";  break;
-        case hearts:    std::cout << " of hearts";    break;
-        case spades:    std::cout << " of spades";    break;
-        default:        std::cout << "???";           break;
-        }
-        std::cout << '\n';
+    if (m_rank == two)
+    {
+        std::cout << "Two of ";
+    }
+    else if (m_rank == three)
+    {
+        std::cout << "Three of ";
+    }
+    else if (m_rank == four)
+    {
+        std::cout << "Four of ";
+    }
+    else if (m_rank == five)
+    {
+        std::cout << "Five of ";
+    }
+    else if (m_rank == six)
+    {
+        std::cout << "Six of ";
+    }
+    else if (m_rank == seven)
+    {
+        std::cout << "Seven of ";
+    }
+    else if (m_rank == eight)
+    {
+        std::cout << "Eight of ";
+    }
+    else if (m_rank == nine)
+    {
+        std::cout << "Nine of ";
+    }
+    else if (m_rank == ten)
+    {
+        std::cout << "Ten of ";
+    }
+    else if (m_rank == Jack)
+    {
+        std::cout << "Jack of ";
+    }
+    else if (m_rank == Queen)
+    {
+        std::cout << "Queen of ";
+    }
+    else if (m_rank == King)
+    {
+        std::cout << "King of ";
+    }
+    else
+    {
+        std::cout << "Ace of ";
+    }    
 }
+
+void Card::PrintColor()
+{
+    if (m_color == clubs)
+    {
+        std::cout << "Clubs";
+    }
+    else if (m_color == diamonds)
+    {
+        std::cout << "Diamonds";
+    }
+    else if (m_color == hearts)
+    {
+        std::cout << "Hearts";
+    }
+    else
+    {
+        std::cout << "Spades";
+    }
+    
+}
+
+void Card::setRank(Rank rank)
+{ m_rank = rank; }
 
 Rank Card::getRank() const
 { return m_rank; }
 
-void Card::setRank(Rank rank)
-{
-    m_rank = rank;
-}
+void Card::setColor(Color color)
+{ m_color = color; }
 
 Color Card::getColor() const
 { return m_color; }
 
-void Card::setColor(Color color)
-{
-    m_color = color;
-}
-
 Deck::Deck()
 {
-    for (int i = 0; i < 52; i++)// for each card in the deck:
+    for (int col = (int)clubs; col <= (int)spades; col++)
     {
-        switch(i % 13)//set a Rank
+        for (int row = (int)two; row < (int)Ace; row++)
         {
-            case 0:   cards[i].setRank(two);	break;
-            case 1:   cards[i].setRank(three);	break;
-            case 2:   cards[i].setRank(four);	break;
-            case 3:   cards[i].setRank(five);	break;
-            case 4:   cards[i].setRank(six);	break;
-            case 5:   cards[i].setRank(seven);	break;
-            case 6:   cards[i].setRank(eight);	break;
-            case 7:   cards[i].setRank(nine);	break;
-            case 8:   cards[i].setRank(ten);	break;
-            case 9:   cards[i].setRank(Jack);	break;
-            case 10:  cards[i].setRank(Queen);  break;
-            case 11:  cards[i].setRank(King);	break;
-            case 13:  cards[i].setRank(Ace);	break;
-        }
-        switch (i / 13)	 			// and a Color.
+            Card card;
+            int index = (13 * col) + row - 1;
+            cards[index] = card;
+            card.m_rank = (Rank)row;
+            card.m_color = (Color)col; 
+        } 
+    }
+}
+
+Rank Deck::getRank() const
+{ return m_rank; }
+
+void Deck::setRank(Rank rank)
+{ m_rank = rank; }
+
+Color Deck::getColor() const
+{ return m_color; }
+
+void Deck::setColor(Color color)
+{ m_color = color; }
+
+void Deck::DisplayDeck()
+{
+    for (int col = (int)clubs; col <= (int)spades; col++)
+    {
+        for (int row = (int)two; row <= (int)Ace; row++)
         {
-        case 0:   cards[i].setColor(clubs);	 	break;
-        case 1:   cards[i].setColor(diamonds);	break;
-        case 2:   cards[i].setColor(hearts);		break;
-        case 3:   cards[i].setColor(spades);		break;
+            int index = (13 * col) + row - 1;
+            cards[index].DisplayCard();
         }
-    } 
+    }
 }
 
 int main()
 {
-    Card card1 {three, clubs};
-    card1.DisplayCard();
-    
+    Deck deck1;
+    deck1.DisplayDeck();
+
     return 0;
 }
